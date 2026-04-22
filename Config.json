@@ -1,34 +1,14 @@
 {
   "general": {
     "targetFPS": 60,
-    "scoreToTransition": 1000
+    "scoreToTransition": 2000
   },
   "player": {
-    "space": {
-      "speed": 5,
-      "health": 100,
-      "fireRate": 150
-    },
-    "moon": {
-      "speed": 3.5,
-      "jumpForce": -12,
-      "gravity": 0.5,
-      "health": 150,
-      "fireRate": 250
-    }
+    "space": { "speed": 6, "health": 100, "fireRate": 150 },
+    "moon": { "speed": 4, "health": 150, "fireRate": 250 }
   },
   "enemies": {
-    "alien": {
-      "health": 30,
-      "speed": 2,
-      "score": 50,
-      "damage": 10
-    },
-    "robot": {
-      "health": 80,
-      "speed": 1,
-      "score": 150,
-      "damage": 25
-    }
+    "alien": { "hp": 25, "speed": 2.5, "score": 50, "damage": 10 },
+    "elite": { "hp": 250, "speed": 1.2, "score": 500, "damage": 25 }
   }
 }
