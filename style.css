@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap');
+
+:root {
+    --neon-blue: #00f2ff;
+    --neon-purple: #bc13fe;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050505;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    display: block;
+    background: black;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* UI Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn:hover {
+    background: var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-blue);
+    transform: scale(1.05);
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.hud-item {
+    background: var(--glass-bg);
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Mobile Controls */
+#joystick-container {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    width: 120px;
+    height: 120px;
+    background: var(--glass-bg);
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    display: none; /* Only show on touch devices */
+}
+
+#joystick-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+@media (max-width: 768px) {
+    #joystick-container {
+        display: block;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}
