@@ -1,6 +1,6 @@
 /**
  * Celestial Vanguard: Lunar Breach
- * Simplified Script for GitHub
+ * AUTO-FIX SCRIPT - Matches your screenshot exactly
  */
 
 const canvas = document.getElementById('gameCanvas');
@@ -18,14 +18,14 @@ let config = null;
 let score = 0;
 let lastTime = 0;
 
-// SIMPLE IMAGE NAMES
+// MATCHING YOUR SCREENSHOT FILENAMES EXACTLY
 const images = {};
 const assetPaths = {
-    nebula: 'nebula.png',
-    moon: 'moon.png',
-    spaceship: 'ship.png',
-    astronaut: 'astro.png',
-    alien: 'alien.png'
+    nebula: 'nebula.png.png',
+    moon: 'moon.png.png',
+    spaceship: 'spaceship.png.png',
+    astronaut: 'astronaut.png.png',
+    alien: 'alien.png.png'
 };
 
 const keys = {};
@@ -34,12 +34,18 @@ const joystick = { active: false, base: {x:0, y:0}, deltaX: 0, deltaY: 0 };
 
 async function init() {
     try {
-        const response = await fetch('config.json');
+        // Checking for 'Config.json' with a capital C as seen in your image
+        const response = await fetch('Config.json'); 
         config = await response.json();
         resize();
         window.addEventListener('resize', resize);
         loadAssets();
-    } catch (e) { console.error(e); }
+    } catch (e) { 
+        console.error("Trying lowercase config.json...");
+        const response = await fetch('config.json');
+        config = await response.json();
+        resize(); loadAssets();
+    }
 }
 
 function resize() {
