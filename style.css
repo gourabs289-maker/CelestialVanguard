@@ -2,142 +2,92 @@
 
 :root {
     --neon-blue: #00f2ff;
-    --neon-purple: #bc13fe;
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --neon-orange: #ffcc00;
+    --neon-red: #ff3300;
+    --glass: rgba(255, 255, 255, 0.05);
 }
 
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
     overflow: hidden;
-    background: #050505;
+    background: #000;
     font-family: 'Inter', sans-serif;
     color: white;
 }
 
 #game-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw; height: 100vh;
 }
 
-canvas {
-    display: block;
-    background: black;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-}
+canvas { display: block; background: black; }
 
-/* UI Overlays */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index: 10;
-    transition: opacity 0.5s ease;
-}
-
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3.5rem;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-}
-
-.btn {
-    padding: 15px 40px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.2rem;
-    color: white;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.btn:hover {
-    background: var(--neon-blue);
-    box-shadow: 0 0 20px var(--neon-blue);
-    transform: scale(1.05);
-}
-
-/* HUD */
+/* HUD - Premium Glassmorphism */
 #hud {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top: 20px; left: 0; right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0 20px;
     pointer-events: none;
     z-index: 5;
 }
 
 .hud-item {
-    background: var(--glass-bg);
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(5px);
+    background: var(--glass);
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     font-family: 'Orbitron', sans-serif;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+    letter-spacing: 2px;
+    font-size: 0.9rem;
 }
 
-/* Mobile Controls */
-#joystick-container {
+/* Overlays */
+.overlay {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
-    width: 120px;
-    height: 120px;
-    background: var(--glass-bg);
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    display: none; /* Only show on touch devices */
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 10;
 }
 
-#joystick-handle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
+.hidden { display: none !important; }
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, var(--neon-blue), #bc13fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+}
+
+p { font-size: 1.2rem; opacity: 0.7; margin-bottom: 40px; }
+
+.btn {
+    padding: 20px 60px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+.btn:hover {
     background: var(--neon-blue);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px var(--neon-blue);
-}
-
-@media (max-width: 768px) {
-    #joystick-container {
-        display: block;
-    }
-    h1 {
-        font-size: 2rem;
-    }
+    color: black;
+    box-shadow: 0 0 40px var(--neon-blue);
 }
